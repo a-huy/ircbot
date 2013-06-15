@@ -5,6 +5,9 @@ from django.conf.urls import patterns, include, url
 # admin.autodiscover()
 
 urlpatterns = patterns('',
+
+    url(r'^callback/$', 'views.callback', name='callback'),
+
     # Examples:
     # url(r'^$', 'sirherp.views.home', name='home'),
     # url(r'^sirherp/', include('sirherp.foo.urls')),
