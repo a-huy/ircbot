@@ -6,7 +6,7 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
 
-    url(r'^callback/$', 'views.callback', name='callback'),
+    url(r'^callback$', 'views.callback', name='callback'),
 
     # Examples:
     # url(r'^$', 'sirherp.views.home', name='home'),
