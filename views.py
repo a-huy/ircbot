@@ -11,7 +11,7 @@ def callback(request):
     elif method == 'POST':
         json_data = simplejson.loads(request.raw_post_data)
         try:
-            print data
+            print json_data
         except KeyError:
             return HttpResponseBadRequest('Malformed data!')
     return HttpResponse(request)
