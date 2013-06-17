@@ -13,8 +13,10 @@ def callback(request):
         json_data = simplejson.loads(request.raw_post_data)
         try:
             text = json_data['text']
+            print text
             if lib.is_cmd(text):
                 payload = lib.execcmd(text)
+                print payload
                 if 'result' in payload:
                     lib.post_chat(payload['result'])
         except KeyError:
