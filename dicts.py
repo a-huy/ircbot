@@ -7,6 +7,7 @@ import urllib
 import json
 import ast
 import re
+from django.conf import settings
 
 def urban(*args, **kwargs):
     '''
