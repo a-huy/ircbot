@@ -1,6 +1,6 @@
 import urllib
 import re
-import router
+import lib
 from dicts import *
 from django.conf import settings
 
@@ -15,7 +15,7 @@ def execcmd(cmd):
         match = re.search(r'^(\w+)\s*=\s*(\w+)$', arg)
         if match: kwargs[match.group(1)] = match.group(2)
     try:
-        return getattr(router, cmd)(*args, **kwargs)
+        return getattr(lib, cmd)(*args, **kwargs)
     except AttributeError:
         return { 'error': 'I am sorry, but I could not recognize the command "%s".' % cmd }
 

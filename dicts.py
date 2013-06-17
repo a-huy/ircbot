@@ -7,7 +7,6 @@ import urllib
 import json
 import ast
 import re
-from conf import settings
 
 def urban(*args, **kwargs):
     '''
