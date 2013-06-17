@@ -1,1 +1,1 @@
-web: gunicorn sirherp.wsgi
+web: gunicorn sirherp/sirherp.wsgi

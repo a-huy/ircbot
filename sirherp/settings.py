@@ -1,9 +1,12 @@
 # Django settings for sirherp project.
 
+import os
+
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
+    ('Andy Nguyen', 'anguyenhuy@gmail.com'),
     # ('Your Name', 'your_email@example.com'),
 )
 
@@ -159,3 +162,11 @@ import dj_database_url
 DATABASES['default'] = dj_database_url.config()
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Email
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = os.environ['SENDGRID_USERNAME']
+EMAIL_HOST_PASSWORD = os.environ['SENDGRID_PASSWORD']
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
