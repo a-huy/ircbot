@@ -170,3 +170,4 @@ EMAIL_HOST_PASSWORD = os.environ['SENDGRID_PASSWORD']
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
+ALLOWED_HOSTS = ['sirherp.herokuapp.com']
