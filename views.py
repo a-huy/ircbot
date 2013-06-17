@@ -11,4 +11,4 @@ def callback(request):
         return HttpResponse('WHATCHU LOOKIN AT?!')
     elif method == 'POST':
         print request.POST
-    return HttpResponse()
+    return HttpResponse(request)

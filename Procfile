@@ -1,1 +1,1 @@
-web: gunicorn sirherp.wsgi
+web: python manage.py runserver
