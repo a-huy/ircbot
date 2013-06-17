@@ -26,4 +26,6 @@ def post_chat(line):
         'bot_id': bot_id,
         'text': line,
     }
+    print 'opts', opts
     result = urllib.urlopen(endpoint, data=urllib.urlencode(opts))
+    print 'result', result.read()
