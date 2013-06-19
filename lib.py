@@ -1,8 +1,10 @@
 import urllib
 import re
 import lib
+import sys
 from dicts import *
 from django.conf import settings
+from django.utils import simplejson
 
 def is_cmd(line):
     return line[0] == '!'
@@ -26,6 +28,8 @@ def post_chat(line):
         'bot_id': bot_id,
         'text': line,
     }
-    print 'opts', opts
-    result = urllib.urlopen(endpoint, data=urllib.urlencode(opts))
-    print 'result', result.read()
+    result = urllib.urlopen(endpoint, data=urllib.urlencode(opts)).read()
+    meta = simplejson.loads(result)['meta']
+    if meta['code'] != 200:
+        err_str = 'Posting to chat returned code %d: %s\n' % (meta['code'], meta['errors'][0])
+        sys.stderr.write(err_str)
