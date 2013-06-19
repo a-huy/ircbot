@@ -29,6 +29,7 @@ def post_chat(line):
         'text': line,
     }
     result = urllib.urlopen(endpoint, data=urllib.urlencode(opts)).read()
+    print result
     meta = simplejson.loads(result)['meta']
     if meta['code'] != 200:
         err_str = 'Posting to chat returned code %d: %s\n' % (meta['code'], meta['errors'][0])
