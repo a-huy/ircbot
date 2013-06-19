@@ -24,14 +24,15 @@ def execcmd(cmd):
 def post_chat(line):
     endpoint = 'https://api.groupme.com/v3/bots/post'
     bot_id = settings.BOT_ID
-    opts = {
-        'bot_id': bot_id,
-        'text': line,
-    }
-    result = urllib.urlopen(endpoint, data=urllib.urlencode(opts)).read()
-    print result
-    if result:
-        meta = simplejson.loads(result)['meta']
-        if meta['code'] != 200:
-            err_str = 'Posting to chat returned code %d: %s\n' % (meta['code'], meta['errors'][0])
-            sys.stderr.write(err_str)
+    for argi in xrange(len(line) / 450 + (1 if len(line) % 450 > 0 else 0)):
+        opts = {
+            'bot_id': bot_id,
+            'text': line[450 * argi: 450 * (argi + 1) - 1],
+        }
+        result = urllib.urlopen(endpoint, data=urllib.urlencode(opts)).read()
+        print 'result: ', result
+        if not re.match('^\s*$', result):
+            meta = simplejson.loads(result)['meta']
+            if meta['code'] != 200:
+                err_str = 'Posting to chat returned code %d: %s\n' % (meta['code'], meta['errors'][0])
+                sys.stderr.write(err_str)

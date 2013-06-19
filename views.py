@@ -15,7 +15,6 @@ def callback(request):
             text = json_data['text']
             if lib.is_cmd(text):
                 payload = lib.execcmd(text)
-                print payload
                 if 'result' in payload:
                     lib.post_chat(payload['result'])
         except KeyError:
