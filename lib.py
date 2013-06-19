@@ -27,7 +27,7 @@ def post_chat(line):
     for argi in xrange(len(line) / 450 + (1 if len(line) % 450 > 0 else 0)):
         opts = {
             'bot_id': bot_id,
-            'text': line[450 * argi: 450 * (argi + 1) - 1],
+            'text': line[450 * argi: 450 * (argi + 1)],
         }
         result = urllib.urlopen(endpoint, data=urllib.urlencode(opts)).read()
         print 'result: ', result
