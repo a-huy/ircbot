@@ -7,7 +7,7 @@ from django.conf import settings
 from django.utils import simplejson
 
 def is_cmd(line):
-    return line != '' and line[0] == '!'
+    if line: return line[0] == '!'
 
 def execcmd(cmd):
     args = filter(bool, cmd[1:].split(' '))
